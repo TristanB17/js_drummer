@@ -74,19 +74,19 @@
       const now = new Date();
       const seconds = now.getSeconds();
       const secondsDegrees = ((seconds / 60) * 360) + 90;
-      // const minutes = now.getTime();
       const minutes = now.getMinutes();
       const minutesDegrees = ((minutes / 60) * 360) + 90;
+
       let hours = now.getHours();
       if (hours > 12) {
         hours -= 12
       } else if (hours === 0) {
         hours === 12
       }
-      const hoursDegrees = ((hours / 12) * 360) + 90;
+      const hourDegrees = ((hours / 12) * 360) + 90;
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
       minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
-      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
     }
 
     setInterval(setDate, 1000);
