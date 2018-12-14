@@ -28,20 +28,45 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
     // Array.prototype.map()
-    const fifteen = inventors.filter(function(inventor) {
-      if (inventor.year >= 1500 && inventor.year < 1600) {
-        return inventor
-      }
-    })
+    // const fifteen = inventors.filter(inventor => {
+    //   if (inventor.year >= 1500 && inventor.year < 1600) {
+    //     return inventor
+    //   }
+    // })
+    // single line
+    const fifteen = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600)
     // 2. Give us an array of the inventors' first and last names
     const inventorNames = inventors.map(inventor => {
       return [inventor.first, inventor.last]
     })
+    const fullNames = inventors.map(inventor => inventor.first + ' ' + inventor.last)
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    // const sortByBirthdate = inventors.sort(inventor => inventor.year)
+    // const sortByBirthdate = inventors.sort(function(a, b) {
+    //   if (a.year > b.year) {
+    //     return 1;
+    //   } else {
+    //     return -1;
+    //   }
+    // });
+    const sortByBirthdate = inventors.sort((a, b) => a.year > b.year ? 1 : -1)
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    const totalYears = inventors.reduce((total, b) => total += (b.passed - b.year), 0)
+    // const totalYears = inventors.reduce((a, b) => {
+    //   return a += (b.passed - b.year)
+    // }, 0)
     // 5. Sort the inventors by years lived
+    const oldest = inventors.sort(function(a, b) {
+      const lastOne = a.passed - a.year;
+      const nextOne = b.passed - b.year;
+      if (lastOne > nextOne) {
+        return -1
+      } else {
+        return 1
+      }
+    })
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
     // 7. sort Exercise
